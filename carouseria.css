@@ -1,0 +1,16 @@
+h1{
+    font-family: Helvetica, sans-serif;
+}
+
+#carouseria{
+    width: 100%;
+}
+
+#carouseria-item{
+    text-align: center;
+    transition: 0.2s;
+}
+
+#carouseria-item h2{
+    text-transform: uppercase;
+}
