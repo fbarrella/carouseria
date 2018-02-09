@@ -7,17 +7,25 @@ function setCarousel(){
         mainCarousel = document.getElementById("carouseria");
         console.log("Container \"" + mainCarousel.id + "\" found!");
 
-        innerElement = mainCarousel.querySelectorAll(".carouseria-item");
-        console.log("Located " + innerElement.length + " carousel inner element(s).");
+        mainCarousel.style.height = "240px";
 
-        for(i=0; i<innerElement.length; i++){
-            innerElement[i].style.display = "none";
-            innerElement[i].style.opacity = 0;
+        if(mainCarousel.querySelector(".carouseria-item") != null){
+            innerElement = mainCarousel.querySelectorAll(".carouseria-item");
+            console.log("Located " + innerElement.length + " carousel inner element(s).");
+
+            for(i=0; i<innerElement.length; i++){
+                innerElement[i].style.display = "none";
+                innerElement[i].style.opacity = 0;
+                innerElement[i].style.position = "relative";
+            }
+
+            focusElem = innerElement[0];
+
+            show(focusElem);
+        }else{
+            console.log("Não foram detectados itens para exibição.");
         }
 
-        focusElem = innerElement[0];
-
-        show(focusElem);
     }else{
         console.log("Houve erro na detecção do id \"carouseria\"!");
     }
