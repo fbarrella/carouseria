@@ -1,54 +1,51 @@
 var mainCarousel = document.getElementById("carouseria");
 var innerElement = mainCarousel.querySelectorAll(".carouseria-item");
+var frontView;
 
 console.log("Container \"" + mainCarousel.id + "\" found!");
 console.log("Located " + innerElement.length + " carousel inner element(s).");
 
-for(i = 0; i<innerElement.length; i++){
-    innerElement[i].style.display = "none";
-    innerElement[i].style.opacity = 0;
+setCarousel();
+
+function setCarousel(){
+    for(i=0; i<innerElement.length; i++){
+        innerElement[i].style.display = "none";
+        innerElement[i].style.opacity = 0;
+    }
 }
 
-function show(num){
-    var focus = innerElement[num-1];
-
+function show(elem){
     try{
-        fadeIn(num);
+        fadeIn(elem);
     }catch(err){
         console.log("Erro detectado: " + err);
     }
-    setTimeout(function(){ focus.style.display = "block"; }, 10);
+    setTimeout(function(){ elem.style.display = "block"; }, 10);
 }
 
-function hide(num){
-    var focus = innerElement[num-1];
-
+function hide(elem){
     try{
-        fadeOut(num);
+        fadeOut(elem);
     }catch(err){
         console.log("Erro detectado: " + err);
     }
-    setTimeout(function(){ focus.style.display = "none"; }, 300);
+    setTimeout(function(){ elem.style.display = "none"; }, 300);
 }
 
-function fadeIn(num){
-    var focus = innerElement[num-1];
-
-    focus.style.opacity = parseFloat(focus.style.opacity) + 0.1;
-    if(focus.style.opacity > 1.0){
-        focus.style.opacity = 1.0;
+function fadeIn(elem){
+    elem.style.opacity = parseFloat(elem.style.opacity) + 0.1;
+    if(elem.style.opacity > 1.0){
+        elem.style.opacity = 1.0;
     }else{
-        setTimeout("fadeIn(" + num + ")", parseFloat(focus.style.opacity));
+        setTimeout("fadeIn(innerElement[0])", 10);
     }
 }
 
-function fadeOut(num){
-    var focus = innerElement[num-1];
-
-    focus.style.opacity = parseFloat(focus.style.opacity) - 0.1;
-    if(focus.style.opacity < 0.0){
-        focus.style.opacity = 0.0;
+function fadeOut(elem){
+    elem.style.opacity = parseFloat(elem.style.opacity) - 0.1;
+    if(elem.style.opacity < 0.0){
+        elem.style.opacity = 0.0;
     }else{
-        setTimeout("fadeOut(" + num + ")", parseFloat(focus.style.opacity));
+        setTimeout("fadeOut("+elem+")", parseFloat(elem.style.opacity));
     }
 }
