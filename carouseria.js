@@ -1,20 +1,26 @@
-var mainCarousel = document.getElementById("carouseria");
-var innerElement = mainCarousel.querySelectorAll(".carouseria-item");
-var focusElem;
-
-console.log("Container \"" + mainCarousel.id + "\" found!");
-console.log("Located " + innerElement.length + " carousel inner element(s).");
+var mainCarousel, innerElement, focusElem;
 
 setCarousel();
 
 function setCarousel(){
-    for(i=0; i<innerElement.length; i++){
-        innerElement[i].style.display = "none";
-        innerElement[i].style.opacity = 0;
-    }
+    if(document.getElementById("carouseria") != null){
+        mainCarousel = document.getElementById("carouseria");
+        console.log("Container \"" + mainCarousel.id + "\" found!");
 
-    focusElem = innerElement[0];
-    show(focusElem);
+        innerElement = mainCarousel.querySelectorAll(".carouseria-item");
+        console.log("Located " + innerElement.length + " carousel inner element(s).");
+
+        for(i=0; i<innerElement.length; i++){
+            innerElement[i].style.display = "none";
+            innerElement[i].style.opacity = 0;
+        }
+
+        focusElem = innerElement[0];
+
+        show(focusElem);
+    }else{
+        console.log("Houve erro na detecção do id \"carouseria\"!");
+    }
 }
 
 function show(elem){
