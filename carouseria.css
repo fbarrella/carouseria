@@ -15,8 +15,7 @@ h1{
     padding: 4em 0;
     align-items: center;
     text-align: center;
-    transition: visibility 0.2s;
-    visibility: hidden;
+    transition: opacity 0.3s;
 }
 
 #carouseria .carouseria-item h2{
@@ -25,4 +24,9 @@ h1{
     color: whitesmoke;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
+}
+
+@keyframes upwards {
+    0% {top: 0px; left: 0px;}
+    100% {top: 400px; left: 0px;}
 }
