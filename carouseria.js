@@ -1,6 +1,6 @@
 var mainCarousel = document.getElementById("carouseria");
 var innerElement = mainCarousel.querySelectorAll(".carouseria-item");
-var frontView;
+var focusElem;
 
 console.log("Container \"" + mainCarousel.id + "\" found!");
 console.log("Located " + innerElement.length + " carousel inner element(s).");
@@ -12,6 +12,9 @@ function setCarousel(){
         innerElement[i].style.display = "none";
         innerElement[i].style.opacity = 0;
     }
+
+    focusElem = innerElement[0];
+    show(focusElem);
 }
 
 function show(elem){
@@ -37,7 +40,7 @@ function fadeIn(elem){
     if(elem.style.opacity > 1.0){
         elem.style.opacity = 1.0;
     }else{
-        setTimeout("fadeIn(innerElement[0])", 10);
+        setTimeout(() => fadeIn(elem), 10);
     }
 }
 
@@ -46,6 +49,6 @@ function fadeOut(elem){
     if(elem.style.opacity < 0.0){
         elem.style.opacity = 0.0;
     }else{
-        setTimeout("fadeOut("+elem+")", parseFloat(elem.style.opacity));
+        setTimeout(() => fadeOut(elem), 10);
     }
 }
