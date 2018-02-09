@@ -1,13 +1,13 @@
 var mainCarousel, innerElement, focusElem;
 
-setCarousel();
+setCarousel("240px");
 
-function setCarousel(){
+function setCarousel(divSize){
     if(document.getElementById("carouseria") != null){
         mainCarousel = document.getElementById("carouseria");
         console.log("Container \"" + mainCarousel.id + "\" found!");
 
-        mainCarousel.style.height = "240px";
+        mainCarousel.style.height = divSize;
 
         if(mainCarousel.querySelector(".carouseria-item") != null){
             innerElement = mainCarousel.querySelectorAll(".carouseria-item");
@@ -21,7 +21,7 @@ function setCarousel(){
 
             focusElem = innerElement[0];
 
-            show(focusElem);
+            refreshFocus();
         }else{
             console.log("Não foram detectados itens para exibição.");
         }
@@ -65,4 +65,14 @@ function fadeOut(elem){
     }else{
         setTimeout(() => fadeOut(elem), 10);
     }
+}
+
+function refreshFocus(){
+    show(focusElem);
+}
+
+function changeFocus(elem){
+    hide(focusElem);
+    focusElem = elem;
+    setTimeout(() => refreshFocus(), 300);
 }
