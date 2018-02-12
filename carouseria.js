@@ -76,3 +76,11 @@ function changeFocus(elem){
     focusElem = elem;
     setTimeout(() => refreshFocus(), 300);
 }
+
+function next(){
+    
+}
+
+function prev(){
+
+}
