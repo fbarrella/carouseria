@@ -25,3 +25,7 @@ h1{
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
 }
+
+#controllers{
+    text-align: center;
+}

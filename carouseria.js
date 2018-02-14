@@ -9,6 +9,8 @@ var arrayParam,
 setCarousel("240px true");
 
 function setCarousel(divParam){
+    console.clear();
+
     if(document.getElementById("carouseria") != null){
         mainCarousel = document.getElementById("carouseria");
         console.log("O bloco \"" + mainCarousel.id + "\" foi encontrado!");
@@ -29,6 +31,7 @@ function setCarousel(divParam){
                 innerElement[i].style.display = "none";
                 innerElement[i].style.opacity = 0;
                 innerElement[i].style.position = "relative";
+                innerElement[i].style.left = "0px";
                 innerElement[i].setAttribute("count", i);
             }
 
@@ -111,6 +114,19 @@ function prev(){
     }else{
         if(nowCount == 0 & carouseriaLoop){
             changeFocus(innerElement[maxElem]);
+        }
+    }
+}
+
+function animar(){
+    var pos = 0;
+    var id = setInterval(frame, 1);
+
+    function frame(){
+        if(pos == 1000){
+            clearInterval(id);
+        }else{
+            innerElement[1].style.left = ++pos + 'px';
         }
     }
 }
