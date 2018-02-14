@@ -1,4 +1,4 @@
-var mainCarousel, innerElement, focusElem;
+var mainCarousel, innerElement, focusElem, maxElem;
 
 setCarousel("240px");
 
@@ -17,9 +17,11 @@ function setCarousel(divSize){
                 innerElement[i].style.display = "none";
                 innerElement[i].style.opacity = 0;
                 innerElement[i].style.position = "relative";
+                innerElement[i].setAttribute("count", i);
             }
 
             focusElem = innerElement[0];
+            maxElem = innerElement.length-1;
 
             refreshFocus();
         }else{
@@ -78,9 +80,21 @@ function changeFocus(elem){
 }
 
 function next(){
-    
+    var nowCount = parseInt(focusElem.getAttribute("count"));
+
+    if(nowCount == maxElem){
+        changeFocus(innerElement[0]);
+    }else{
+        changeFocus(innerElement[nowCount+1]);
+    }
 }
 
 function prev(){
+    var nowCount = parseInt(focusElem.getAttribute("count"));
 
+    if(nowCount == 0){
+        changeFocus(innerElement[maxElem]);
+    }else{
+        changeFocus(innerElement[nowCount-1]);
+    }
 }
