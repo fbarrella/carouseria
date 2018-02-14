@@ -1,17 +1,29 @@
-var mainCarousel, innerElement, focusElem, maxElem;
+var arrayParam, 
+    carouseriaHeight, 
+    carouseriaLoop, 
+    mainCarousel, 
+    innerElement, 
+    focusElem, 
+    maxElem;
 
-setCarousel("240px");
+setCarousel("240px true");
 
-function setCarousel(divSize){
+function setCarousel(divParam){
     if(document.getElementById("carouseria") != null){
         mainCarousel = document.getElementById("carouseria");
-        console.log("Container \"" + mainCarousel.id + "\" found!");
+        console.log("O bloco \"" + mainCarousel.id + "\" foi encontrado!");
 
-        mainCarousel.style.height = divSize;
+        carouseriaHeight = divParam.split(" ")[0];
+        carouseriaLoop = ("true" == divParam.split(" ")[1]);
+
+        console.log("O parâmetro \"carouseriaHeight\" está configurado com " + carouseriaHeight + ".");
+        console.log("O parâmetro \"carouseriaLoop\" está configurado como " + carouseriaLoop + ".");
+
+        mainCarousel.style.height = carouseriaHeight;
 
         if(mainCarousel.querySelector(".carouseria-item") != null){
             innerElement = mainCarousel.querySelectorAll(".carouseria-item");
-            console.log("Located " + innerElement.length + " carousel inner element(s).");
+            console.log("Localizado(s) " + innerElement.length + " elemento(s) interno(s).");
 
             for(i=0; i<innerElement.length; i++){
                 innerElement[i].style.display = "none";
@@ -82,19 +94,23 @@ function changeFocus(elem){
 function next(){
     var nowCount = parseInt(focusElem.getAttribute("count"));
 
-    if(nowCount == maxElem){
-        changeFocus(innerElement[0]);
-    }else{
+    if(nowCount < maxElem){
         changeFocus(innerElement[nowCount+1]);
+    }else{
+        if(nowCount == maxElem & carouseriaLoop){
+            changeFocus(innerElement[0]);
+        }
     }
 }
 
 function prev(){
     var nowCount = parseInt(focusElem.getAttribute("count"));
 
-    if(nowCount == 0){
-        changeFocus(innerElement[maxElem]);
-    }else{
+    if(nowCount > 0){
         changeFocus(innerElement[nowCount-1]);
+    }else{
+        if(nowCount == 0 & carouseriaLoop){
+            changeFocus(innerElement[maxElem]);
+        }
     }
 }
