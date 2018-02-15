@@ -32,6 +32,7 @@ function setCarousel(divParam){
                 innerElement[i].style.opacity = 0;
                 innerElement[i].style.position = "relative";
                 innerElement[i].style.left = "0px";
+                innerElement[i].style.top = "0px";
                 innerElement[i].setAttribute("count", i);
             }
 
@@ -60,6 +61,7 @@ function show(elem){
 function hide(elem){
     try{
         fadeOut(elem);
+        slideV(elem, 250);
     }catch(err){
         console.log("Erro detectado: " + err);
     }
@@ -118,15 +120,32 @@ function prev(){
     }
 }
 
-function animar(){
+function slideH(elem, size){
     var pos = 0;
-    var id = setInterval(frame, 1);
+    var add = 1;
+    var id = setInterval(frame, 10);
 
     function frame(){
-        if(pos == 1000){
+        if(pos > size){
             clearInterval(id);
         }else{
-            innerElement[1].style.left = ++pos + 'px';
+            pos+=++add;
+            elem.style.left = pos + 'px';
+        }
+    }
+}
+
+function slideV(elem, size){
+    var pos = 0;
+    var add = 1;
+    var id = setInterval(frame, 10);
+
+    function frame(){
+        if(pos > size){
+            clearInterval(id);
+        }else{
+            pos-=++add;
+            elem.style.top = pos + 'px';
         }
     }
 }

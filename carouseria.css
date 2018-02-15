@@ -9,6 +9,7 @@ h1{
 
 #carouseria{
     width: 100%;
+    overflow: hidden;
 }
 
 #carouseria .carouseria-item{
