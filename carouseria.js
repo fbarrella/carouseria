@@ -39,7 +39,7 @@ function setCarousel(divParam){
             focusElem = innerElement[0];
             maxElem = innerElement.length-1;
 
-            refreshFocus();
+            refreshFocus(false);
         }else{
             console.log("Não foram detectados itens para exibição.");
         }
@@ -49,23 +49,56 @@ function setCarousel(divParam){
     }
 }
 
-function show(elem){
-    try{
-        fadeIn(elem);
-    }catch(err){
-        console.log("Erro detectado: " + err);
+function show(elem, reverse){
+    if(!reverse){
+        try{
+            fadeIn(elem);
+            slideV(elem, 0, 250, reverse);
+        }catch(err){
+            console.log("Erro detectado: " + err);
+        }
+        setTimeout(() => {
+            elem.style.display = "block";
+        }, 10);
+    }else{
+        try{
+            fadeIn(elem);
+            slideV(elem, 0, -250, reverse);
+        }catch(err){
+            console.log("Erro detectado: " + err);
+        }
+        setTimeout(() => {
+            elem.style.display = "block";
+        }, 10);
     }
-    setTimeout(function(){ elem.style.display = "block"; }, 10);
 }
 
-function hide(elem){
-    try{
-        fadeOut(elem);
-        slideV(elem, 250);
-    }catch(err){
-        console.log("Erro detectado: " + err);
+function hide(elem, reverse){
+    if(!reverse){
+        try{
+            fadeOut(elem);
+            slideV(elem, -250, 0, reverse);
+        }catch(err){
+            console.log("Erro detectado: " + err);
+        }
+        setTimeout(() => {
+            elem.style.display = "none";
+            elem.style.top = "0px";
+            elem.style.left = "0px";
+        }, 300);
+    }else{
+        try{
+            fadeOut(elem);
+            slideV(elem, 250, 0, reverse);
+        }catch(err){
+            console.log("Erro detectado: " + err);
+        }
+        setTimeout(() => {
+            elem.style.display = "none";
+            elem.style.top = "0px";
+            elem.style.left = "0px";
+        }, 300);
     }
-    setTimeout(function(){ elem.style.display = "none"; }, 300);
 }
 
 function fadeIn(elem){
@@ -86,24 +119,24 @@ function fadeOut(elem){
     }
 }
 
-function refreshFocus(){
-    show(focusElem);
+function refreshFocus(reverse){
+    show(focusElem, reverse);
 }
 
-function changeFocus(elem){
-    hide(focusElem);
+function changeFocus(elem, reverse){
+    hide(focusElem, reverse);
     focusElem = elem;
-    setTimeout(() => refreshFocus(), 300);
+    setTimeout(() => refreshFocus(reverse), 300);
 }
 
 function next(){
     var nowCount = parseInt(focusElem.getAttribute("count"));
 
     if(nowCount < maxElem){
-        changeFocus(innerElement[nowCount+1]);
+        changeFocus(innerElement[nowCount+1], false);
     }else{
         if(nowCount == maxElem & carouseriaLoop){
-            changeFocus(innerElement[0]);
+            changeFocus(innerElement[0], false);
         }
     }
 }
@@ -112,39 +145,37 @@ function prev(){
     var nowCount = parseInt(focusElem.getAttribute("count"));
 
     if(nowCount > 0){
-        changeFocus(innerElement[nowCount-1]);
+        changeFocus(innerElement[nowCount-1], true);
     }else{
         if(nowCount == 0 & carouseriaLoop){
-            changeFocus(innerElement[maxElem]);
+            changeFocus(innerElement[maxElem], true);
         }
     }
 }
 
-function slideH(elem, size){
-    var pos = 0;
+function slideH(elem, size, pos, reverse){
     var add = 1;
     var id = setInterval(frame, 10);
 
     function frame(){
-        if(pos > size){
+        if(reverse ? pos <= size : pos >= size){
             clearInterval(id);
         }else{
-            pos+=++add;
+            reverse ? pos-=++add : pos+=++add;
             elem.style.left = pos + 'px';
         }
     }
 }
 
-function slideV(elem, size){
-    var pos = 0;
+function slideV(elem, size, pos, reverse){
     var add = 1;
     var id = setInterval(frame, 10);
 
     function frame(){
-        if(pos > size){
+        if(reverse ? pos >= size : pos <= size){
             clearInterval(id);
         }else{
-            pos-=++add;
+            reverse ? pos+=++add : pos-=++add;
             elem.style.top = pos + 'px';
         }
     }
