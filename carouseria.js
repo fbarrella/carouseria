@@ -1,12 +1,13 @@
 var arrayParam, 
     carouseriaHeight, 
-    carouseriaLoop, 
+    carouseriaLoop,
+    carouseriaDirection,
     mainCarousel, 
     innerElement, 
     focusElem, 
     maxElem;
 
-setCarousel("240px true");
+setCarousel("240px true vertical");
 
 function setCarousel(divParam){
     console.clear();
@@ -17,6 +18,7 @@ function setCarousel(divParam){
 
         carouseriaHeight = divParam.split(" ")[0];
         carouseriaLoop = ("true" == divParam.split(" ")[1]);
+        carouseriaDirection = divParam.split(" ")[2];
 
         console.log("O parâmetro \"carouseriaHeight\" está configurado com " + carouseriaHeight + ".");
         console.log("O parâmetro \"carouseriaLoop\" está configurado como " + carouseriaLoop + ".");
@@ -53,7 +55,15 @@ function show(elem, reverse){
     if(!reverse){
         try{
             fadeIn(elem);
-            slideV(elem, 0, 250, reverse);
+            if(carouseriaDirection == "horizontal"){
+                slideH(elem, 0, 1340, 0, reverse);
+            }else{
+                if(carouseriaDirection == "vertical"){
+                    slideV(elem, 0, 250, 0, reverse);
+                }else{
+                    console.log("Erro na definição da direção do carousel.");
+                }
+            }
         }catch(err){
             console.log("Erro detectado: " + err);
         }
@@ -63,7 +73,15 @@ function show(elem, reverse){
     }else{
         try{
             fadeIn(elem);
-            slideV(elem, 0, -250, reverse);
+            if(carouseriaDirection == "horizontal"){
+                slideH(elem, 0, -1340, 0, reverse);
+            }else{
+                if(carouseriaDirection == "vertical"){
+                    slideV(elem, 0, -250, 0, reverse);
+                }else{
+                    console.log("Erro na definição da direção do carousel.");
+                }
+            }
         }catch(err){
             console.log("Erro detectado: " + err);
         }
@@ -77,7 +95,15 @@ function hide(elem, reverse){
     if(!reverse){
         try{
             fadeOut(elem);
-            slideV(elem, -250, 0, reverse);
+            if(carouseriaDirection == "horizontal"){
+                slideH(elem, -1340, 0, -1340, reverse);
+            }else{
+                if(carouseriaDirection == "vertical"){
+                    slideV(elem, -250, 0, -250, reverse);
+                }else{
+                    console.log("Erro na definição da direção do carousel.");
+                }
+            }
         }catch(err){
             console.log("Erro detectado: " + err);
         }
@@ -89,7 +115,15 @@ function hide(elem, reverse){
     }else{
         try{
             fadeOut(elem);
-            slideV(elem, 250, 0, reverse);
+            if(carouseriaDirection == "horizontal"){
+                slideH(elem, 1340, 0, 1340, reverse);
+            }else{
+                if(carouseriaDirection == "vertical"){
+                    slideV(elem, 250, 0, 250, reverse);
+                }else{
+                    console.log("Erro na definição da direção do carousel.");
+                }
+            }
         }catch(err){
             console.log("Erro detectado: " + err);
         }
@@ -105,8 +139,9 @@ function fadeIn(elem){
     elem.style.opacity = parseFloat(elem.style.opacity) + 0.1;
     if(elem.style.opacity > 1.0){
         elem.style.opacity = 1.0;
+        console.log("fadeIn ended");
     }else{
-        setTimeout(() => fadeIn(elem), 10);
+        setTimeout(() => { console.log("fadeIn running"); fadeIn(elem); }, 10);
     }
 }
 
@@ -153,30 +188,32 @@ function prev(){
     }
 }
 
-function slideH(elem, size, pos, reverse){
+function slideH(elem, path, startpos, finalpos, reverse){
     var add = 1;
     var id = setInterval(frame, 10);
 
     function frame(){
-        if(reverse ? pos <= size : pos >= size){
+        if(reverse ? startpos >= path : startpos <= path){
             clearInterval(id);
+            elem.style.left = finalpos + 'px';
         }else{
-            reverse ? pos-=++add : pos+=++add;
-            elem.style.left = pos + 'px';
+            reverse ? startpos+=add++ : startpos-=add++;
+            elem.style.left = startpos + 'px';
         }
     }
 }
 
-function slideV(elem, size, pos, reverse){
+function slideV(elem, path, startpos, finalpos, reverse){
     var add = 1;
     var id = setInterval(frame, 10);
 
     function frame(){
-        if(reverse ? pos >= size : pos <= size){
+        if(reverse ? startpos >= path : startpos <= path){
             clearInterval(id);
+            elem.style.top = finalpos + 'px';
         }else{
-            reverse ? pos+=++add : pos-=++add;
-            elem.style.top = pos + 'px';
+            reverse ? startpos+=add++ : startpos-=add++;
+            elem.style.top = startpos + 'px';
         }
     }
 }
