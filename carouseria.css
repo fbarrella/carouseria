@@ -51,3 +51,21 @@ h1{
 #test-btns{
     text-align: center;
 }
+
+#test-btns button{
+    padding: 3px 8px;
+    font-family: Helvetica, sans-serif;
+    font-size: 0.8em;
+    background-color: rgb(225, 225, 225);
+    border: solid 1px rgb(173, 173, 173);
+}
+
+#test-btns button:hover{
+    background-color: rgb(229, 241, 251);
+    border: solid 1px rgb(0, 120, 215);
+}
+
+#test-btns button:disabled{
+    background-color: rgb(204, 204, 204);
+    border: solid 1px rgb(191, 191, 191);
+}

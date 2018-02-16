@@ -57,10 +57,10 @@ function show(elem, reverse){
         try{
             fadeIn(elem);
             if(carouseriaDirection == "horizontal"){
-                slideH(elem, 0, 1340, 0, reverse);
+                slideH(elem, 0, mainCarousel.clientWidth, 0, reverse);
             }else{
                 if(carouseriaDirection == "vertical"){
-                    slideV(elem, 0, 250, 0, reverse);
+                    slideV(elem, 0, mainCarousel.clientHeight, 0, reverse);
                 }else{
                     console.log("Erro na definição da direção do carousel.");
                 }
@@ -75,10 +75,10 @@ function show(elem, reverse){
         try{
             fadeIn(elem);
             if(carouseriaDirection == "horizontal"){
-                slideH(elem, 0, -1340, 0, reverse);
+                slideH(elem, 0, -(mainCarousel.clientWidth), 0, reverse);
             }else{
                 if(carouseriaDirection == "vertical"){
-                    slideV(elem, 0, -250, 0, reverse);
+                    slideV(elem, 0, -(mainCarousel.clientHeight), 0, reverse);
                 }else{
                     console.log("Erro na definição da direção do carousel.");
                 }
@@ -97,10 +97,10 @@ function hide(elem, reverse){
         try{
             fadeOut(elem);
             if(carouseriaDirection == "horizontal"){
-                slideH(elem, -1340, 0, -1340, reverse);
+                slideH(elem, -(mainCarousel.clientWidth), 0, -(mainCarousel.clientWidth), reverse);
             }else{
                 if(carouseriaDirection == "vertical"){
-                    slideV(elem, -250, 0, -250, reverse);
+                    slideV(elem, -(mainCarousel.clientHeight), 0, -(mainCarousel.clientHeight), reverse);
                 }else{
                     console.log("Erro na definição da direção do carousel.");
                 }
@@ -117,10 +117,10 @@ function hide(elem, reverse){
         try{
             fadeOut(elem);
             if(carouseriaDirection == "horizontal"){
-                slideH(elem, 1340, 0, 1340, reverse);
+                slideH(elem, mainCarousel.clientWidth, 0, mainCarousel.clientWidth, reverse);
             }else{
                 if(carouseriaDirection == "vertical"){
-                    slideV(elem, 250, 0, 250, reverse);
+                    slideV(elem, mainCarousel.clientHeight, 0, mainCarousel.clientHeight, reverse);
                 }else{
                     console.log("Erro na definição da direção do carousel.");
                 }
