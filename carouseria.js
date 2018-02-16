@@ -22,6 +22,7 @@ function setCarousel(divParam){
 
         console.log("O parâmetro \"carouseriaHeight\" está configurado com " + carouseriaHeight + ".");
         console.log("O parâmetro \"carouseriaLoop\" está configurado como " + carouseriaLoop + ".");
+        console.log("O parâmetro \"carouseriaDirection\" está configurado como " + carouseriaDirection + ".");
 
         mainCarousel.style.height = carouseriaHeight;
 
@@ -139,9 +140,8 @@ function fadeIn(elem){
     elem.style.opacity = parseFloat(elem.style.opacity) + 0.1;
     if(elem.style.opacity > 1.0){
         elem.style.opacity = 1.0;
-        console.log("fadeIn ended");
     }else{
-        setTimeout(() => { console.log("fadeIn running"); fadeIn(elem); }, 10);
+        setTimeout(() => { fadeIn(elem); }, 10);
     }
 }
 
@@ -150,7 +150,7 @@ function fadeOut(elem){
     if(elem.style.opacity < 0.0){
         elem.style.opacity = 0.0;
     }else{
-        setTimeout(() => fadeOut(elem), 10);
+        setTimeout(() => { fadeOut(elem); }, 10);
     }
 }
 
@@ -170,7 +170,7 @@ function next(){
     if(nowCount < maxElem){
         changeFocus(innerElement[nowCount+1], false);
     }else{
-        if(nowCount == maxElem & carouseriaLoop){
+        if(nowCount == maxElem && carouseriaLoop){
             changeFocus(innerElement[0], false);
         }
     }
@@ -182,7 +182,7 @@ function prev(){
     if(nowCount > 0){
         changeFocus(innerElement[nowCount-1], true);
     }else{
-        if(nowCount == 0 & carouseriaLoop){
+        if(nowCount == 0 && carouseriaLoop){
             changeFocus(innerElement[maxElem], true);
         }
     }
