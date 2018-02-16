@@ -189,31 +189,29 @@ function prev(){
 }
 
 function slideH(elem, path, startpos, finalpos, reverse){
-    var add = 1;
-    var id = setInterval(frame, 10);
-
-    function frame(){
-        if(reverse ? startpos >= path : startpos <= path){
-            clearInterval(id);
-            elem.style.left = finalpos + 'px';
-        }else{
-            reverse ? startpos+=add++ : startpos-=add++;
-            elem.style.left = startpos + 'px';
+    var id = setInterval(() => {
+        for(var i=0; i<=100; i+=2){
+            if(reverse ? startpos >= path : startpos <= path){
+                clearInterval(id);
+                elem.style.left = finalpos + 'px';
+            }else{
+                reverse ? startpos+=1 : startpos-=1;
+                elem.style.left = startpos + 'px';
+            }
         }
-    }
+    }, 10);
 }
 
 function slideV(elem, path, startpos, finalpos, reverse){
-    var add = 1;
-    var id = setInterval(frame, 10);
-
-    function frame(){
-        if(reverse ? startpos >= path : startpos <= path){
-            clearInterval(id);
-            elem.style.top = finalpos + 'px';
-        }else{
-            reverse ? startpos+=add++ : startpos-=add++;
-            elem.style.top = startpos + 'px';
+    var id = setInterval(()=>{
+        for(var i=0; i<=50; i+=2){
+            if(reverse ? startpos >= path : startpos <= path){
+                clearInterval(id);
+                elem.style.top = finalpos + 'px';
+            }else{
+                reverse ? startpos+=1 : startpos-=1;
+                elem.style.top = startpos + 'px';
+            }
         }
-    }
+    }, 10);
 }
