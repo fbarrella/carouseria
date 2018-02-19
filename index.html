@@ -12,24 +12,28 @@
     <h1>Test page</h1>
 
     <div id="carouseria">
-        <div class="carouseria-item" style="background-color:crimson;">
+        <div class="carouseria-item" style="background: linear-gradient(to bottom, #f05c79, #d2143a);">
             <div class="item-style">
                 <h2>Container 1</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, beatae?</p>
             </div>
         </div>
-        <div class="carouseria-item" style="background-color:darkgoldenrod;">
+        <div class="carouseria-item" style="background: linear-gradient(to bottom, #ebcb7a, #ceb131);">
             <div class="item-style">
                 <h2>Container 2</h2>
             </div>
         </div>
-        <div class="carouseria-item" style="background-color:midnightblue;">
+        <div class="carouseria-item" style="background: linear-gradient(to bottom, #8282e3, #202092);">
             <div class="item-style">
                 <h2>Container 3</h2>
             </div>
         </div>
     </div>
-
+    <div class="carouseria-index hori">
+        <span class="index-item"></span>
+        <span class="index-item"></span>
+        <span class="index-item"></span>
+    </div>
 
     <section id="test-btns">
         <p>
@@ -37,8 +41,8 @@
             <button id="c1_2" onclick="hide(innerElement[0])">Hide Container 1</button>
             <button id="c2_1" onclick="show(innerElement[1], false)">Show Container 2</button>
             <button id="c2_2" onclick="hide(innerElement[1])">Hide Container 2</button>
-            <button onclick="slideH(innerElement[1], 1350, 0, 1350, true)">Animate Container 2</button>
-            <button onclick="setCarousel('240px false horizontal'), contCheck()">Reset Carousel (horizontal w/ loop off)</button>
+            <button onclick="slideH(innerElement[1], mainCarousel.clientWidth, 0, mainCarousel.clientWidth, true)">Animate Container 2</button>
+            <button onclick="setCarousel('240px false horizontal false'), contCheck()">Reset Carousel (horizontal w/ loop off)</button>
             <button onclick="changeFocus(innerElement[1]), contCheck()">Change Focus to Container 2</button>
         </p>
 

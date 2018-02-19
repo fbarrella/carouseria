@@ -3,13 +3,44 @@
     padding: 0;
     width: 100%;
     overflow: hidden;
-    border: solid 1px black;
 }
 
 #carouseria .carouseria-item{
     display: none;
     height: 100%;
     transition: opacity 0.3s;
+}
+
+.carouseria-index{
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.carouseria-index .index-item{
+    display: block;
+    margin: 3px 3px;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: solid 1px rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+}
+
+.verti{
+    flex-direction: column;
+    align-items: flex-end;
+    height: 240px;
+    margin-top: -240px;
+    margin-right: 20px;
+}
+
+.hori{
+    flex-direction: row;
+    align-items: flex-end;
+    height: 240px;
+    margin-top: -240px;
+    top: -20px
 }
 
 /* ESTILOS OPCIONAIS: */
@@ -53,11 +84,13 @@ h1{
 }
 
 #test-btns button{
+    margin: 2px auto;
     padding: 3px 8px;
     font-family: Helvetica, sans-serif;
     font-size: 0.8em;
     background-color: rgb(225, 225, 225);
     border: solid 1px rgb(173, 173, 173);
+    transition: 0.3s;
 }
 
 #test-btns button:hover{

@@ -2,15 +2,19 @@ var arrayParam,
     carouseriaHeight, 
     carouseriaLoop,
     carouseriaDirection,
+    carouseriaAutoPlay,
+    autoPlay,
+    slideReady,
     mainCarousel, 
     innerElement, 
     focusElem, 
     maxElem;
 
-setCarousel("240px true vertical");
+setCarousel("240px true vertical false");
 
 function setCarousel(divParam){
     console.clear();
+    clearInterval();
 
     if(document.getElementById("carouseria") != null){
         mainCarousel = document.getElementById("carouseria");
@@ -19,6 +23,7 @@ function setCarousel(divParam){
         carouseriaHeight = divParam.split(" ")[0];
         carouseriaLoop = ("true" == divParam.split(" ")[1]);
         carouseriaDirection = divParam.split(" ")[2];
+        carouseriaAutoPlay = divParam.split(" ")[3];
 
         console.log("O parâmetro \"carouseriaHeight\" está configurado com " + carouseriaHeight + ".");
         console.log("O parâmetro \"carouseriaLoop\" está configurado como " + carouseriaLoop + ".");
@@ -41,8 +46,10 @@ function setCarousel(divParam){
 
             focusElem = innerElement[0];
             maxElem = innerElement.length-1;
+            slideReady = true;
 
             refreshFocus(false);
+            autoplay(carouseriaAutoPlay);
         }else{
             console.log("Não foram detectados itens para exibição.");
         }
@@ -53,6 +60,9 @@ function setCarousel(divParam){
 }
 
 function show(elem, reverse){
+    elem.style.top = "0px";
+    elem.style.left = "0px";
+
     if(!reverse){
         try{
             fadeIn(elem);
@@ -110,8 +120,6 @@ function hide(elem, reverse){
         }
         setTimeout(() => {
             elem.style.display = "none";
-            elem.style.top = "0px";
-            elem.style.left = "0px";
         }, 300);
     }else{
         try{
@@ -130,9 +138,17 @@ function hide(elem, reverse){
         }
         setTimeout(() => {
             elem.style.display = "none";
-            elem.style.top = "0px";
-            elem.style.left = "0px";
         }, 300);
+    }
+}
+
+function autoplay(param){
+    if(param.split("|")[0] == "true"){
+        autoPlay = setInterval(() => next(), param.split("|")[1]);
+        console.log("Função \"autoplay\" ativada!");
+    }else{
+        clearInterval(autoPlay);
+        console.log("Função \"autoplay\" desativada!");
     }
 }
 
@@ -140,6 +156,7 @@ function fadeIn(elem){
     elem.style.opacity = parseFloat(elem.style.opacity) + 0.1;
     if(elem.style.opacity > 1.0){
         elem.style.opacity = 1.0;
+        setTimeout(() => { slideReady = true; }, 200);
     }else{
         setTimeout(() => { fadeIn(elem); }, 10);
     }
@@ -165,32 +182,40 @@ function changeFocus(elem, reverse){
 }
 
 function next(){
-    var nowCount = parseInt(focusElem.getAttribute("count"));
+    if(slideReady){
+        var nowCount = parseInt(focusElem.getAttribute("count"));
 
-    if(nowCount < maxElem){
-        changeFocus(innerElement[nowCount+1], false);
-    }else{
-        if(nowCount == maxElem && carouseriaLoop){
-            changeFocus(innerElement[0], false);
+        if(nowCount < maxElem){
+            slideReady = false;
+            changeFocus(innerElement[nowCount+1], false);
+        }else{
+            if(nowCount == maxElem && carouseriaLoop){
+                slideReady = false;
+                changeFocus(innerElement[0], false);
+            }
         }
     }
 }
 
 function prev(){
-    var nowCount = parseInt(focusElem.getAttribute("count"));
+    if(slideReady){
+        var nowCount = parseInt(focusElem.getAttribute("count"));
 
-    if(nowCount > 0){
-        changeFocus(innerElement[nowCount-1], true);
-    }else{
-        if(nowCount == 0 && carouseriaLoop){
-            changeFocus(innerElement[maxElem], true);
+        if(nowCount > 0){
+            slideReady = false;
+            changeFocus(innerElement[nowCount-1], true);
+        }else{
+            if(nowCount == 0 && carouseriaLoop){
+                slideReady = false;
+                changeFocus(innerElement[maxElem], true);
+            }
         }
     }
 }
 
 function slideH(elem, path, startpos, finalpos, reverse){
     var id = setInterval(() => {
-        for(var i=0; i<=100; i+=2){
+        for(var i=0; i<=140; i+=2){
             if(reverse ? startpos >= path : startpos <= path){
                 clearInterval(id);
                 elem.style.left = finalpos + 'px';
