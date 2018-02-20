@@ -25,6 +25,7 @@
     background-color: black;
     border-radius: 50%;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .verti{

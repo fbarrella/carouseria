@@ -174,15 +174,26 @@ function visualIndex(num, setParams){
     indexContentChild = indexContent.querySelectorAll('span');
     for(var i=0; i<indexContentChild.length; i++){
         indexContentChild[i].style.opacity = 0.4;
+        indexContentChild[i].setAttribute('onclick', 'changeFocus(innerElement[' + i + '], false)');
     }
 }
 
 function indexChange(){
+    var count = parseInt(focusElem.getAttribute("count"));
     for(var i=0; i<indexContentChild.length; i++){
         indexContentChild[i].style.opacity = 0.4;
+        indexContentChild[i].setAttribute('onclick', 'changeFocus(innerElement[' + i + '], false)');
     }
 
-    indexContentChild[parseInt(focusElem.getAttribute("count"))].style.opacity = 0.8;
+    indexContentChild[count].style.opacity = 0.8;
+
+    for(var j=1; j<indexContentChild.length; j++){
+        if((count - j)>=0){
+            indexContentChild[count - j].setAttribute('onclick', 'changeFocus(innerElement[' + (count - j) + '], true)');
+        }else{
+            break;
+        }
+    }
 }
 
 function fadeIn(elem){
