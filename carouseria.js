@@ -3,6 +3,9 @@ var arrayParam,
     carouseriaLoop,
     carouseriaDirection,
     carouseriaAutoPlay,
+    carouseriaIndex,
+    indexContent,
+    indexContentChild,
     autoPlay,
     slideReady,
     mainCarousel, 
@@ -10,11 +13,10 @@ var arrayParam,
     focusElem, 
     maxElem;
 
-setCarousel("240px true vertical false");
-
 function setCarousel(divParam){
     console.clear();
     clearInterval();
+    if(indexContent != null) indexContent.remove();
 
     if(document.getElementById("carouseria") != null){
         mainCarousel = document.getElementById("carouseria");
@@ -24,6 +26,7 @@ function setCarousel(divParam){
         carouseriaLoop = ("true" == divParam.split(" ")[1]);
         carouseriaDirection = divParam.split(" ")[2];
         carouseriaAutoPlay = divParam.split(" ")[3];
+        carouseriaIndex = (divParam.split(" ")[4]).split("|");
 
         console.log("O parâmetro \"carouseriaHeight\" está configurado com " + carouseriaHeight + ".");
         console.log("O parâmetro \"carouseriaLoop\" está configurado como " + carouseriaLoop + ".");
@@ -47,6 +50,8 @@ function setCarousel(divParam){
             focusElem = innerElement[0];
             maxElem = innerElement.length-1;
             slideReady = true;
+
+            if(carouseriaIndex[0] == "true") visualIndex(innerElement.length, carouseriaIndex[1]);
 
             refreshFocus(false);
             autoplay(carouseriaAutoPlay);
@@ -80,6 +85,7 @@ function show(elem, reverse){
         }
         setTimeout(() => {
             elem.style.display = "block";
+            if(carouseriaIndex[0] == "true") indexChange();
         }, 10);
     }else{
         try{
@@ -98,6 +104,7 @@ function show(elem, reverse){
         }
         setTimeout(() => {
             elem.style.display = "block";
+            if(carouseriaIndex[0] == "true") indexChange();
         }, 10);
     }
 }
@@ -150,6 +157,32 @@ function autoplay(param){
         clearInterval(autoPlay);
         console.log("Função \"autoplay\" desativada!");
     }
+}
+
+function visualIndex(num, setParams){
+    indexContent = document.createElement('div');
+    setParams == "vertical"?
+    indexContent.setAttribute("class", "carouseria-index verti"):
+    indexContent.setAttribute("class", "carouseria-index hori");
+    
+    for (var i=0; i<num; i++){
+        indexContent.innerHTML = indexContent.innerHTML + '<span class="index-item"></span>';
+    }
+
+    mainCarousel.insertAdjacentElement('afterend', indexContent);
+
+    indexContentChild = indexContent.querySelectorAll('span');
+    for(var i=0; i<indexContentChild.length; i++){
+        indexContentChild[i].style.opacity = 0.4;
+    }
+}
+
+function indexChange(){
+    for(var i=0; i<indexContentChild.length; i++){
+        indexContentChild[i].style.opacity = 0.4;
+    }
+
+    indexContentChild[parseInt(focusElem.getAttribute("count"))].style.opacity = 0.8;
 }
 
 function fadeIn(elem){

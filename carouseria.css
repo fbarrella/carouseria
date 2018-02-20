@@ -20,26 +20,26 @@
 .carouseria-index .index-item{
     display: block;
     margin: 3px 3px;
-    width: 10px;
-    height: 10px;
-    background-color: rgba(0, 0, 0, 0.2);
-    border: solid 1px rgba(0, 0, 0, 0.6);
+    width: 9px;
+    height: 9px;
+    background-color: black;
     border-radius: 50%;
+    transition: 0.2s;
 }
 
 .verti{
     flex-direction: column;
     align-items: flex-end;
-    height: 240px;
-    margin-top: -240px;
+    height: 240px; /* clientHeight */
+    margin-top: -240px; /* clientHeight */
     margin-right: 20px;
 }
 
 .hori{
     flex-direction: row;
     align-items: flex-end;
-    height: 240px;
-    margin-top: -240px;
+    height: 240px; /* clientHeight */
+    margin-top: -240px; /* clientHeight */
     top: -20px
 }
 
