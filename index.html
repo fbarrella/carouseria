@@ -36,7 +36,7 @@
             <button id="c1_2" onclick="hide(innerElement[0])">Hide Container 1</button>
             <button id="c2_1" onclick="show(innerElement[1], false)">Show Container 2</button>
             <button id="c2_2" onclick="hide(innerElement[1])">Hide Container 2</button>
-            <button onclick="setCarousel('240px true vertical false true'), contCheck()">Reset Carousel</button>
+            <button onclick="setCarousel('240px true vertical false true'), contCheck(), evenLis()">Reset Carousel</button>
             <button onclick="changeFocus(innerElement[1]), contCheck()">Change Focus to Container 2</button>
         </p>
 
@@ -48,9 +48,10 @@
 
     <script type="application/javascript" src="carouseria.js"></script>
     <script>
-        setCarousel("240px true vertical false true");
+        // CÓDIGO DE INICIALIZAÇÃO DO CAROUSEL
+        setCarousel("240px true vertical false true|vertical");
 
-        // CÓDIGO PARA USO NA PÁGINA DE TESTE APENAS
+        // CÓDIGO PARA CUSTOMIZAÇÃO NA PÁGINA DE TESTE APENAS
         function contCheck(){setTimeout(()=>{var e=document.getElementById("carouseria")
         .querySelector('[count="0"]'),t=document.getElementById("carouseria")
         .querySelector('[count="1"]');e.style.opacity>0?(document.getElementById("c2_1")
@@ -60,7 +61,8 @@
         .disabled=!0,document.getElementById("c2_1").disabled=!1,document.getElementById("c2_2")
         .disabled=!1):(document.getElementById("c1_1").disabled=!0,document.getElementById("c1_2")
         .disabled=!0,document.getElementById("c2_1").disabled=!0,document.getElementById("c2_2")
-        .disabled=!0)},300)}contCheck();
+        .disabled=!0)},300)}contCheck();function evenLis(){for(var c=0;c<indexContentChild.length;c++)
+        indexContentChild[c].addEventListener("click",()=>{contCheck();});}evenLis();
     </script>
 </body>
 </html>
