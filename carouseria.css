@@ -22,7 +22,7 @@
     margin: 3px 3px;
     width: 9px;
     height: 9px;
-    background-color: black;
+    background-color: white;
     border-radius: 50%;
     transition: 0.2s;
     cursor: pointer;
@@ -46,15 +46,22 @@
 
 /* ESTILOS OPCIONAIS: */
 body{
-    font-family: Helvetica, sans-serif;
+    background-color: #bbd1d8;
 }
 
 h1{
+    font-family: Quicksand, sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    margin: .5em auto .5em auto;
+    padding: 0;
     text-align: center;
-    text-transform: uppercase;
+    color: #005169;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
 }
 
 .item-style{
+    font-family: Quicksand, sans-serif;
     display: flex;
     flex-direction: column;
     height: 70px;
@@ -67,13 +74,14 @@ h1{
     padding: 0;
     margin: auto;
     color: lemonchiffon;
+    font-weight: 300;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .item-style h2{
     margin: auto;
     padding: 0;
-    font-weight: 100;
+    font-weight: 500;
     font-size: 35px;
     color: whitesmoke;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);

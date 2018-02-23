@@ -185,7 +185,7 @@ function indexChange(){
         indexContentChild[i].setAttribute('onclick', 'changeFocus(innerElement[' + i + '], false)');
     }
 
-    indexContentChild[count].style.opacity = 0.8;
+    indexContentChild[count].style.opacity = 0.9;
 
     for(var j=1; j<indexContentChild.length; j++){
         if((count - j)>=0){

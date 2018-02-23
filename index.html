@@ -7,23 +7,24 @@
     <title>Test Page</title>
 
     <link rel="stylesheet" href="carouseria.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet"> 
 </head>
 <body>
-    <h1>Test page</h1>
+    <h1>Carouseria!</h1>
 
-    <div id="carouseria">
-        <div class="carouseria-item" style="background: linear-gradient(to bottom, #f05c79, #d2143a);">
+    <div id="carouseria" style="border-radius: 7px;">
+        <div class="carouseria-item" style="background: linear-gradient(to bottom, #00a3d3, #00778d);">
             <div class="item-style">
                 <h2>Container 1</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, beatae?</p>
             </div>
         </div>
-        <div class="carouseria-item" style="background: linear-gradient(to bottom, #ebcb7a, #ceb131);">
+        <div class="carouseria-item" style="background: linear-gradient(to bottom, #00a3d3, #00778d);">
             <div class="item-style">
                 <h2>Container 2</h2>
             </div>
         </div>
-        <div class="carouseria-item" style="background: linear-gradient(to bottom, #8282e3, #202092);">
+        <div class="carouseria-item" style="background: linear-gradient(to bottom, #00a3d3, #00778d);">
             <div class="item-style">
                 <h2>Container 3</h2>
             </div>
@@ -49,7 +50,7 @@
     <script type="application/javascript" src="carouseria.js"></script>
     <script>
         // CÓDIGO DE INICIALIZAÇÃO DO CAROUSEL
-        setCarousel("240px true vertical false true|vertical");
+        setCarousel("240px true vertical false true");
 
         // CÓDIGO PARA CUSTOMIZAÇÃO NA PÁGINA DE TESTE APENAS
         function contCheck(){setTimeout(()=>{var e=document.getElementById("carouseria")
