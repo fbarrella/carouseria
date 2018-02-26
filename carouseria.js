@@ -4,6 +4,7 @@ var arrayParam,
     carouseriaDirection,
     carouseriaAutoPlay,
     carouseriaIndex,
+    carouseriaNav,
     indexContent,
     indexContentChild,
     autoPlay,
@@ -27,6 +28,7 @@ function setCarousel(divParam){
         carouseriaDirection = divParam.split(" ")[2];
         carouseriaAutoPlay = divParam.split(" ")[3];
         carouseriaIndex = (divParam.split(" ")[4]).split("|");
+        carouseriaNav = (divParam.split(" ")[5]).split("|");
 
         console.log("O parâmetro \"carouseriaHeight\" está configurado com " + carouseriaHeight + ".");
         console.log("O parâmetro \"carouseriaLoop\" está configurado como " + carouseriaLoop + ".");
@@ -51,6 +53,7 @@ function setCarousel(divParam){
             maxElem = innerElement.length-1;
             slideReady = true;
 
+            if(carouseriaNav[0] == "true") navNative(carouseriaNav[1]);
             if(carouseriaIndex[0] == "true") visualIndex(innerElement.length, carouseriaIndex[1]);
 
             refreshFocus(false);
@@ -151,8 +154,13 @@ function hide(elem, reverse){
 
 function autoplay(param){
     if(param.split("|")[0] == "true"){
-        autoPlay = setInterval(() => next(), param.split("|")[1]);
-        console.log("Função \"autoplay\" ativada!");
+        if(param.split("|")[1] != null){
+            autoPlay = setInterval(() => next(), param.split("|")[1]);
+            console.log("Função \"autoplay\" ativada!");
+        }else{
+            console.log("Tempo de \"autoplay\" não definido!");
+            console.log("Função \"autoplay\" desativada!");
+        }
     }else{
         clearInterval(autoPlay);
         console.log("Função \"autoplay\" desativada!");
@@ -196,6 +204,32 @@ function indexChange(){
         }else{
             break;
         }
+    }
+}
+
+function navNative(setparam){
+    var navContent = document.createElement('div');
+    var btnCont = document.createElement('div');
+    navContent.setAttribute('class', 'carouseria-nav');
+
+    navContent.style.height = mainCarousel.clientHeight + "px";
+    navContent.style.marginBottom = "-" + mainCarousel.clientHeight + "px";
+    navContent.style.top = "-" + mainCarousel.clientHeight + "px";
+    
+    if(setparam == "vertical"){
+        btnCont.setAttribute('class', 'vertical');
+        btnCont.innerHTML = '<img onclick="prev()" class="nav-up" src="http://icons.iconarchive.com/icons/icons8/ios7/128/Arrows-Up-4-icon.png" />';
+        btnCont.innerHTML += '<img onclick="next()" class="nav-down" src="http://icons.iconarchive.com/icons/icons8/ios7/128/Arrows-Down-4-icon.png" />';
+
+        navContent.insertAdjacentElement('afterbegin', btnCont);
+        mainCarousel.insertAdjacentElement('afterend', navContent);
+    }else{
+        btnCont.setAttribute('class', 'horizontal');
+        btnCont.innerHTML = '<img onclick="prev()" class="nav-left" src="http://icons.iconarchive.com/icons/icons8/ios7/128/Arrows-Back-icon.png" />';
+        btnCont.innerHTML += '<img onclick="next()" class="nav-right" src="http://icons.iconarchive.com/icons/icons8/ios7/128/Arrows-Forward-icon.png" />';
+
+        navContent.insertAdjacentElement('afterbegin', btnCont);
+        mainCarousel.insertAdjacentElement('afterend', navContent);
     }
 }
 

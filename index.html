@@ -31,20 +31,13 @@
         </div>
     </div>
 
-    <div class="h-carouseria-nav">
-        <div class="nav-inside">
-                <img onclick="prev()" class="nav-left" src="http://icons.iconarchive.com/icons/icons8/ios7/128/Arrows-Back-icon.png" />
-                <img onclick="next()" class="nav-right" src="http://icons.iconarchive.com/icons/icons8/ios7/128/Arrows-Forward-icon.png" />
-        </div>
-    </div>
-
     <section id="test-btns">
         <p>
             <button id="c1_1" onclick="show(innerElement[0], false)">Show Container 1</button>
             <button id="c1_2" onclick="hide(innerElement[0])">Hide Container 1</button>
             <button id="c2_1" onclick="show(innerElement[1], false)">Show Container 2</button>
             <button id="c2_2" onclick="hide(innerElement[1])">Hide Container 2</button>
-            <button onclick="setCarousel('240px true vertical false true'), contCheck(), evenLis()">Reset Carousel</button>
+            <button onclick="setCarousel('240px true vertical false true true'), contCheck(), evenLis()">Reset Carousel</button>
             <button onclick="changeFocus(innerElement[1]), contCheck()">Change Focus to Container 2</button>
         </p>
 
@@ -57,7 +50,7 @@
     <script type="application/javascript" src="carouseria.js"></script>
     <script>
         // CÓDIGO DE INICIALIZAÇÃO DO CAROUSEL
-        setCarousel("240px true vertical false true");
+        setCarousel("250px true vertical false true true");
 
         // CÓDIGO PARA CUSTOMIZAÇÃO NA PÁGINA DE TESTE APENAS
         function contCheck(){setTimeout(()=>{var e=document.getElementById("carouseria")

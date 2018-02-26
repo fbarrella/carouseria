@@ -11,18 +11,63 @@
     transition: opacity 0.3s;
 }
 
-.h-carouseria-nav{
+.carouseria-nav{
     display: block;
     position: relative;
     padding: 0;
     margin: 0 auto;
-    height: 240px; /* clientHeight */
-    margin-bottom: -240px; /* clientHeight */
-    top: -240px; /* clientHeight */
     pointer-events: none;
 }
 
-.h-carouseria-nav .nav-inside{
+.carouseria-nav .vertical{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.carouseria-nav .vertical .nav-up{
+    display: block;
+    align-self: flex-start;
+    pointer-events: all;
+    width: 50px;
+    opacity: 0.7;
+    margin: auto;
+    margin-top: 0px;
+    cursor: pointer;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    transition: 0.2s;
+}
+
+.carouseria-nav .vertical .nav-up:hover{
+    opacity: 1;
+}
+
+.carouseria-nav .vertical .nav-down{
+    display: block;
+    pointer-events: all;
+    align-self: flex-end;
+    width: 50px;
+    opacity: 0.7;
+    margin: auto;
+    margin-bottom: 0;
+    cursor: pointer;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    transition: 0.2s;
+}
+
+.carouseria-nav .vertical .nav-down:hover{
+    opacity: 1;
+}
+
+.carouseria-nav .horizontal{
     display: inline-block;
     width: 100%;
     position: relative;
@@ -30,7 +75,7 @@
     transform: translateY(-50%);
 }
 
-.h-carouseria-nav .nav-inside .nav-left{
+.carouseria-nav .horizontal .nav-left{
     pointer-events: all;
     float: left;
     margin: 0 auto;
@@ -41,15 +86,15 @@
     padding-bottom: 15px;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.0));
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
     transition: 0.2s;
 }
 
-.h-carouseria-nav .nav-inside .nav-left:hover{
+.carouseria-nav .horizontal .nav-left:hover{
     opacity: 1;
 }
 
-.h-carouseria-nav .nav-inside .nav-right{
+.carouseria-nav .horizontal .nav-right{
     pointer-events: all;
     float: right;
     margin: 0 auto;
@@ -60,11 +105,11 @@
     padding-bottom: 15px;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.0));
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
     transition: 0.2s;
 }
 
-.h-carouseria-nav .nav-inside .nav-right:hover{
+.carouseria-nav .horizontal .nav-right:hover{
     opacity: 1;
 }
 
