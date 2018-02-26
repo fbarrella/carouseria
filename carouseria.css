@@ -11,10 +11,68 @@
     transition: opacity 0.3s;
 }
 
+.h-carouseria-nav{
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    height: 240px; /* clientHeight */
+    margin-bottom: -240px; /* clientHeight */
+    top: -240px; /* clientHeight */
+    pointer-events: none;
+}
+
+.h-carouseria-nav .nav-inside{
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.h-carouseria-nav .nav-inside .nav-left{
+    pointer-events: all;
+    float: left;
+    margin: 0 auto;
+    width: 50px;
+    opacity: 0.7;
+    cursor: pointer;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.0));
+    transition: 0.2s;
+}
+
+.h-carouseria-nav .nav-inside .nav-left:hover{
+    opacity: 1;
+}
+
+.h-carouseria-nav .nav-inside .nav-right{
+    pointer-events: all;
+    float: right;
+    margin: 0 auto;
+    width: 50px;
+    opacity: 0.7;
+    cursor: pointer;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.0));
+    transition: 0.2s;
+}
+
+.h-carouseria-nav .nav-inside .nav-right:hover{
+    opacity: 1;
+}
+
 .carouseria-index{
     display: flex;
     position: relative;
     justify-content: center;
+    pointer-events: none;
 }
 
 .carouseria-index .index-item{
@@ -26,21 +84,18 @@
     border-radius: 50%;
     transition: 0.2s;
     cursor: pointer;
+    pointer-events: all;
 }
 
 .verti{
     flex-direction: column;
     align-items: flex-end;
-    height: 240px; /* clientHeight */
-    margin-top: -240px; /* clientHeight */
     margin-right: 20px;
 }
 
 .hori{
     flex-direction: row;
     align-items: flex-end;
-    height: 240px; /* clientHeight */
-    margin-top: -240px; /* clientHeight */
     top: -20px
 }
 

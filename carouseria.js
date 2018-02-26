@@ -164,6 +164,9 @@ function visualIndex(num, setParams){
     setParams == "vertical"?
     indexContent.setAttribute("class", "carouseria-index verti"):
     indexContent.setAttribute("class", "carouseria-index hori");
+
+    indexContent.style.height = mainCarousel.clientHeight + "px";
+    indexContent.style.marginTop = "-" + mainCarousel.clientHeight + "px";
     
     for (var i=0; i<num; i++){
         indexContent.innerHTML = indexContent.innerHTML + '<span class="index-item"></span>';
