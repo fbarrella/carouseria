@@ -1,4 +1,7 @@
-/* ESTILO PADRÃO DO CAROUSEL */
+/*-----------------------
+ESTILO PADRÃO DO CAROUSEL
+-----------------------*/
+
 #carouseria{
     padding: 0;
     width: 100%;
@@ -142,72 +145,4 @@
     flex-direction: row;
     align-items: flex-end;
     top: -20px
-}
-
-/* ESTILOS OPCIONAIS: */
-body{
-    background-color: #bbd1d8;
-}
-
-h1{
-    font-family: Quicksand, sans-serif;
-    font-size: 40px;
-    font-weight: 500;
-    margin: .5em auto .5em auto;
-    padding: 0;
-    text-align: center;
-    color: #005169;
-    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
-}
-
-.item-style{
-    font-family: Quicksand, sans-serif;
-    display: flex;
-    flex-direction: column;
-    height: 70px;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.item-style p{
-    padding: 0;
-    margin: auto;
-    color: lemonchiffon;
-    font-weight: 300;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-.item-style h2{
-    margin: auto;
-    padding: 0;
-    font-weight: 500;
-    font-size: 35px;
-    color: whitesmoke;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-    text-transform: uppercase;
-}
-
-#test-btns{
-    text-align: center;
-}
-
-#test-btns button{
-    margin: 2px auto;
-    padding: 3px 8px;
-    font-family: Helvetica, sans-serif;
-    font-size: 0.8em;
-    background-color: rgb(225, 225, 225);
-    border: solid 1px rgb(173, 173, 173);
-    transition: 0.3s;
-}
-
-#test-btns button:hover{
-    background-color: rgb(229, 241, 251);
-    border: solid 1px rgb(0, 120, 215);
-}
-
-#test-btns button:disabled{
-    background-color: rgb(204, 204, 204);
-    border: solid 1px rgb(191, 191, 191);
 }

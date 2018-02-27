@@ -7,6 +7,7 @@
     <title>Test Page</title>
 
     <link rel="stylesheet" href="carouseria.css">
+    <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet"> 
 </head>
 <body>
@@ -33,18 +34,97 @@
 
     <section id="test-btns">
         <p>
-            <button id="c1_1" onclick="show(innerElement[0], false)">Show Container 1</button>
-            <button id="c1_2" onclick="hide(innerElement[0])">Hide Container 1</button>
-            <button id="c2_1" onclick="show(innerElement[1], false)">Show Container 2</button>
-            <button id="c2_2" onclick="hide(innerElement[1])">Hide Container 2</button>
-            <button onclick="setCarousel('240px true vertical false true true'), contCheck(), evenLis()">Reset Carousel</button>
-            <button onclick="changeFocus(innerElement[1]), contCheck()">Change Focus to Container 2</button>
+            <button id="c1_1" onclick="show(innerElement[0], false)">Mostrar Container 1</button>
+            <button id="c1_2" onclick="hide(innerElement[0])">Esconder Container 1</button>
+            <button id="c2_1" onclick="show(innerElement[1], false)">Mostrar Container 2</button>
+            <button id="c2_2" onclick="hide(innerElement[1])">Esconder Container 2</button>
+            <button onclick="setCarousel('250px true vertical false true true'), contCheck(), evenLis()">Redefinir Carousel</button>
+            <button onclick="changeFocus(innerElement[1]), contCheck()">Mudar para Container 2</button>
         </p>
 
         <p>
-            <button onclick="prev(), contCheck()">Prev</button>
-            <button onclick="next(), contCheck()">Next</button>
+            <button onclick="prev(), contCheck()">Anterior</button>
+            <button onclick="next(), contCheck()">Próximo</button>
         </p>
+
+        <form id="tweakForm">
+            <table>
+                <tr>
+                    <td class="names">Altura do bloco:</td>
+                    <td>
+                        <input type="text" name="contHeight" value="250" placeholder="250">
+                        <select name="contUnit" form="tweakForm">
+                            <option value="px" selected>px</option>
+                            <option value="em">em</option>
+                            <option value="vh">vh</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="names">Loop:</td>
+                    <td>
+                        <select name="loopTf" form="tweakForm">
+                            <option value="true">true</option>
+                            <option value="false" selected>false</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="names">Sentido do movimento:</td>
+                    <td>
+                        <select name="movementDir" form="tweakForm">
+                            <option value="vertical" selected>vertical</option>
+                            <option value="horizontal">horizontal</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="names">Autoplay:</td>
+                    <td>
+                        <select name="autoplayTf" form="tweakForm">
+                            <option value="true">true</option>
+                            <option value="false" selected>false</option>
+                        </select>
+                        <input type="text" name="autoplayMilisec" placeholder="1000">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="names">Índice visual:</td>
+                    <td>
+                        <select name="indexTf" form="tweakForm">
+                            <option value="true" selected>true</option>
+                            <option value="false">false</option>
+                        </select>
+
+                        <select name="indexDir" form="tweakForm">
+                            <option value="vertical">vertical</option>
+                            <option value="horizontal" selected>horizontal</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="names">Botões de navegação:</td>
+                    <td>
+                        <select name="navTf" form="tweakForm">
+                            <option value="true" selected>true</option>
+                            <option value="false">false</option>
+                        </select>
+
+                        <select name="navDir" form="tweakForm">
+                            <option value="vertical">vertical</option>
+                            <option value="horizontal" selected>horizontal</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <div id="SHOWQUERY">
+                    <span style="color:gray;">setCarousel("250px true vertical false true true")</span>
+                </div>
+                <span id="showQry" onclick="setForm(), contCheck(), evenLis()">Atualizar Carousel!</span>
+            </div>
+        </form>
+        
     </section>
 
     <script type="application/javascript" src="carouseria.js"></script>
@@ -52,20 +132,23 @@
         // CÓDIGO DE INICIALIZAÇÃO DO CAROUSEL
         setCarousel("250px true vertical false true true");
 
-        // CÓDIGO PARA CUSTOMIZAÇÃO NA PÁGINA DE TESTE APENAS
-        function contCheck(){setTimeout(()=>{var e=document.getElementById("carouseria")
-        .querySelector('[count="0"]'),t=document.getElementById("carouseria")
-        .querySelector('[count="1"]');e.style.opacity>0?(document.getElementById("c2_1")
-        .disabled=!0,document.getElementById("c2_2").disabled=!0,document.getElementById("c1_1")
-        .disabled=!1,document.getElementById("c1_2").disabled=!1):t.style.opacity>0?
-        (document.getElementById("c1_1").disabled=!0,document.getElementById("c1_2")
-        .disabled=!0,document.getElementById("c2_1").disabled=!1,document.getElementById("c2_2")
-        .disabled=!1):(document.getElementById("c1_1").disabled=!0,document.getElementById("c1_2")
-        .disabled=!0,document.getElementById("c2_1").disabled=!0,document.getElementById("c2_2")
-        .disabled=!0)},300)}contCheck();function evenLis(){for(var c=0;c<indexContentChild.length;c++)
-        indexContentChild[c].addEventListener("click",()=>{contCheck();});
-        for (var d=0;d<navContent.querySelectorAll('img').length;d++) navContent.querySelectorAll('img')[d]
-        .addEventListener("click",()=>{contCheck();});}evenLis();
+        // CÓDIGO PARA CUSTOMIZAÇÃO NA PÁGINA 'INDEX' APENAS
+        function contCheck(){setTimeout(()=>{var e=document.getElementById("carouseria").querySelector('[count="0"]'),
+        t=document.getElementById("carouseria").querySelector('[count="1"]');e.style.opacity>0?(document.getElementById("c2_1")
+        .disabled=!0,document.getElementById("c2_2").disabled=!0,document.getElementById("c1_1").disabled=!1,
+        document.getElementById("c1_2").disabled=!1):t.style.opacity>0?(document.getElementById("c1_1").disabled=!0,
+        document.getElementById("c1_2").disabled=!0,document.getElementById("c2_1").disabled=!1,document.getElementById("c2_2")
+        .disabled=!1):(document.getElementById("c1_1").disabled=!0,document.getElementById("c1_2").disabled=!0,
+        document.getElementById("c2_1").disabled=!0,document.getElementById("c2_2").disabled=!0)},300)}contCheck();
+        function evenLis(){for(var c=0;c<indexContentChild.length;c++)indexContentChild[c].addEventListener("click",
+        ()=>{contCheck()});for(var d=0;d<navContent.querySelectorAll('img').length;d++)navContent.querySelectorAll('img')[d]
+        .addEventListener("click",()=>{contCheck()})}evenLis();function setForm(){var formItems={};var formShort=document
+        .getElementById("tweakForm").elements;var queryline;for(var g=0;g<formShort.length;g++){if(formShort[g].name!="")
+        formItems[formShort[g].name]=formShort[g].value}queryline=formItems.contHeight+formItems.contUnit+" ";queryline+=formItems.loopTf+" ";
+        queryline+=formItems.movementDir+" ";queryline+=formItems.autoplayTf;queryline+=(formItems.autoplayTf=="true")?
+        "|"+formItems.autoplayMilisec+" ":" ";queryline+=formItems.indexTf;queryline+=(formItems.indexTf=="true" && formItems.indexDir!="horizontal")?
+        "|"+formItems.indexDir+" ":" ";queryline+=formItems.navTf;queryline+=(formItems.navTf=="true" && formItems.navDir!="horizontal")?
+        "|"+formItems.navDir+" ":"";document.getElementById("SHOWQUERY").innerHTML="setCarousel(\""+queryline+"\")";setCarousel(queryline)}
     </script>
 </body>
 </html>

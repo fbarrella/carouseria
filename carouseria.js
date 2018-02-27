@@ -17,7 +17,7 @@ var arrayParam,
 
 function setCarousel(divParam){
     console.clear();
-    clearInterval();
+    clearInterval(autoPlay);
     if(indexContent != null) indexContent.remove();
     if(navContent != null) navContent.remove();
 
