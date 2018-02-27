@@ -1,3 +1,19 @@
+/*
+   Copyright 2018 Felipe Barrella Netto
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+
 var arrayParam, 
     carouseriaHeight, 
     carouseriaLoop,
@@ -221,15 +237,15 @@ function navNative(setparam){
     
     if(setparam == "vertical"){
         btnCont.setAttribute('class', 'vertical');
-        btnCont.innerHTML = '<img onclick="prev()" class="nav-up" src="http://icons.iconarchive.com/icons/icons8/ios7/128/Arrows-Up-4-icon.png" />';
-        btnCont.innerHTML += '<img onclick="next()" class="nav-down" src="http://icons.iconarchive.com/icons/icons8/ios7/128/Arrows-Down-4-icon.png" />';
+        btnCont.innerHTML = '<span onclick="prev()" class="nav-up">&#65087;</span>';
+        btnCont.innerHTML += '<span onclick="next()" class="nav-down">&#65088;</span>';
 
         navContent.insertAdjacentElement('afterbegin', btnCont);
         mainCarousel.insertAdjacentElement('afterend', navContent);
     }else{
         btnCont.setAttribute('class', 'horizontal');
-        btnCont.innerHTML = '<img onclick="prev()" class="nav-left" src="http://icons.iconarchive.com/icons/icons8/ios7/128/Arrows-Back-icon.png" />';
-        btnCont.innerHTML += '<img onclick="next()" class="nav-right" src="http://icons.iconarchive.com/icons/icons8/ios7/128/Arrows-Forward-icon.png" />';
+        btnCont.innerHTML = '<span onclick="prev()" class="nav-left">&#10092;</span>';
+        btnCont.innerHTML += '<span onclick="next()" class="nav-right">&#10093;</span>';
 
         navContent.insertAdjacentElement('afterbegin', btnCont);
         mainCarousel.insertAdjacentElement('afterend', navContent);
