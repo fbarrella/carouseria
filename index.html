@@ -63,7 +63,9 @@
         .disabled=!1):(document.getElementById("c1_1").disabled=!0,document.getElementById("c1_2")
         .disabled=!0,document.getElementById("c2_1").disabled=!0,document.getElementById("c2_2")
         .disabled=!0)},300)}contCheck();function evenLis(){for(var c=0;c<indexContentChild.length;c++)
-        indexContentChild[c].addEventListener("click",()=>{contCheck();});}evenLis();
+        indexContentChild[c].addEventListener("click",()=>{contCheck();});
+        for (var d=0;d<navContent.querySelectorAll('img').length;d++) navContent.querySelectorAll('img')[d]
+        .addEventListener("click",()=>{contCheck();});}evenLis();
     </script>
 </body>
 </html>

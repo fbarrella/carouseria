@@ -5,6 +5,7 @@ var arrayParam,
     carouseriaAutoPlay,
     carouseriaIndex,
     carouseriaNav,
+    navContent,
     indexContent,
     indexContentChild,
     autoPlay,
@@ -18,6 +19,7 @@ function setCarousel(divParam){
     console.clear();
     clearInterval();
     if(indexContent != null) indexContent.remove();
+    if(navContent != null) navContent.remove();
 
     if(document.getElementById("carouseria") != null){
         mainCarousel = document.getElementById("carouseria");
@@ -208,8 +210,9 @@ function indexChange(){
 }
 
 function navNative(setparam){
-    var navContent = document.createElement('div');
     var btnCont = document.createElement('div');
+
+    navContent = document.createElement('div');
     navContent.setAttribute('class', 'carouseria-nav');
 
     navContent.style.height = mainCarousel.clientHeight + "px";
