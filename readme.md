@@ -3,13 +3,15 @@
 
 Em certos momentos, a simplicidade vai muito além de um humilde modo de viver. Para um ganho de eficiência, o uso da simplicidade torna-se uma ferramenta de extrema importância. Surge daí, a ideia de criar um carousel puramente em javascript sem a utilização de funções anexas que - por muitas vezes - acabam não sendo utilizadas e terminam justamente causando lentidão no carregamento da sua página. Dê uma checada e sinta-se a vontade pra usar essa ferramenta!
 
-<a href="https://tldrlegal.com/license/mit-license">
-    <img src="https://img.shields.io/badge/Licensed%20under-MIT%20License-red.svg"/>
-</a>
-<a href="https://twitter.com/arrobarrella">
-    <img src="https://img.shields.io/badge/Author-%40arrobarrella-blue.svg"/>
-</a>
-<img src="https://img.shields.io/badge/Version-1.0-brightgreen.svg"/>
+<p>
+    <a href="https://tldrlegal.com/license/mit-license">
+        <img src="https://img.shields.io/badge/Licensed%20under-MIT%20License-red.svg"/>
+    </a>
+    <a href="https://twitter.com/arrobarrella">
+        <img src="https://img.shields.io/badge/Author-%40arrobarrella-blue.svg"/>
+    </a>
+    <img src="https://img.shields.io/badge/Version-1.0-brightgreen.svg"/>
+</p>
 
 --------------------------
 
@@ -64,7 +66,7 @@ Por fim, acrescenta-se ao final da tag `<body>` um script com a linha de inicial
 
 ```HTML
 <script>
-    setCarousel("[size] [loop] [direction] [autoplay|milisecs] [index|orientation] [nav|orientation]");
+    setCarousel("[size] [loop] [direction] [autoplay|millisecs] [index|orientation] [nav|orientation]");
 </script>
 ```
 
@@ -76,22 +78,22 @@ Por fim, acrescenta-se ao final da tag `<body>` um script com a linha de inicial
 | `[size]` | Esse parâmetro deve ser substituído pela altura desejada para o carousel (em `px`, `em` ou `vh`). A largura é sempre definida por padrão como 100%, mas pode ser redefinida através da criação de uma folha de estilo própria. |
 | `[loop]` | Indica a presença ou não de um loop entre os itens do carousel. Deve ser substituído por `true` ou `false`. |
 | `[direction]` | Indica a direção da animação dos itens do carousel. Deve ser substituído por `vertical` ou `horizontal`. |
-| `[autoplay|milisecs]` | É um parâmetro em duas partes e indica a presença de transição automática entre os itens. O `autoplay` deve ser substituído por `true` ou `false`. Exclusivamente quando o parâmetro `autoplay` for `true`, deve-se indicar o tempo da transição automática substituindo `milisecs` pelo devido tempo em milissegundos, sempre precedido por uma barra vertical. Não é necessário a definição deste parâmetro (e nem a inclusão da barra) quando `autoplay` for `false`. |
-| `[index|orientation]` | Representa a presença de um índice visual no carousel. O `index` deve ser substituído por `true` ou `false`. O parâmetro `orientation` precedido por barra vertical representa a orientação do índice e só deve ser adicionado no caso da orientação desejada ser `vertical`. A orientação padrão de `index` é `horizontal` e dispensa o uso do parâmetro `orientation` precedido da barra. A dispensa também é aplicada no caso de `index` ser `false`. |
-| `[nav|orientation]` | Indica a presença dos botões de navegação nativos no carousel. O `nav` deve ser substituído por `true` ou `false`. O parâmetro `orientation` precedido por barra vertical representa a orientação dos botões e só deve ser adicionado no caso da orientação desejada ser `vertical`. A orientação padrão de `nav` é `horizontal` e dispensa o uso do parâmetro `orientation` precedido da barra. A dispensa também é aplicada no caso de `nav` ser `false`. |
+| <code>[autoplay&#124;millisecs]</code> | É um parâmetro em duas partes e indica a presença de transição automática entre os itens. O `autoplay` deve ser substituído por `true` ou `false`. Exclusivamente quando o parâmetro `autoplay` for `true`, deve-se indicar o tempo da transição automática substituindo `millisecs` pelo devido tempo em milissegundos, sempre precedido por uma barra vertical. Não é necessário a definição deste parâmetro (e nem a inclusão da barra) quando `autoplay` for `false`. |
+| <code>[index&#124;orientation]</code> | Representa a presença de um índice visual no carousel. O `index` deve ser substituído por `true` ou `false`. O parâmetro `orientation` precedido por barra vertical representa a orientação do índice e só deve ser adicionado no caso da orientação desejada ser `vertical`. A orientação padrão de `index` é `horizontal` e dispensa o uso do parâmetro `orientation` precedido da barra. A dispensa também é aplicada no caso de `index` ser `false`. |
+| <code>[nav&#124;orientation]</code> | Indica a presença dos botões de navegação nativos no carousel. O `nav` deve ser substituído por `true` ou `false`. O parâmetro `orientation` precedido por barra vertical representa a orientação dos botões e só deve ser adicionado no caso da orientação desejada ser `vertical`. A orientação padrão de `nav` é `horizontal` e dispensa o uso do parâmetro `orientation` precedido da barra. A dispensa também é aplicada no caso de `nav` ser `false`. |
 
 Um exemplo de inicialização para um carousel pode ser:
 
     setCarousel("250px true vertical false true true");
 
 ### Métodos disponíveis no plugin.
-* `next()` transiciona o carousel para o próximo item da fila;
-* `prev()` transiciona o carousel para o item anterior da fila;
-* `setCarousel("parâmetros")` inicializa o carousel usando parâmetros pré-definidos já descritos dentro das aspas;
-* `show(item, reverso)` exibe um item especificado entre os parêntesis usando a animação normal ou invertida;
-* `hide(item, reverso)` esconde um item especificado entre os parêntesis usando a animação normal ou invertida;
-* `changeFocus(item, reverso)` muda o foco do item atual para o item passado como parâmetro dentro dos parêntesis também alternando entre a animação normal ou a invertida;
-* `refreshFocus(reverso)` atualiza o item que está em foco no momento, permitindo a escolha entre a utilização da animação normal ou da invertida;
+* **`next()`** transiciona o carousel para o próximo item da fila;
+* **`prev()`** transiciona o carousel para o item anterior da fila;
+* **`setCarousel("parâmetros")`** inicializa o carousel usando parâmetros pré-definidos já descritos dentro das aspas;
+* **`show(item, reverso)`** exibe um item especificado entre os parêntesis usando a animação normal ou invertida;
+* **`hide(item, reverso)`** esconde um item especificado entre os parêntesis usando a animação normal ou invertida;
+* **`changeFocus(item, reverso)`** muda o foco do item atual para o item passado como parâmetro dentro dos parêntesis também alternando entre a animação normal ou a invertida;
+* **`refreshFocus(reverso)`** atualiza o item que está em foco no momento, permitindo a escolha entre a utilização da animação normal ou da invertida;
 
 ### Livre costumização.
 É possível também a costumização das características visuais do carousel por meio da sobreposição dos elementos do css padrão na folha de estilo da sua página web.
