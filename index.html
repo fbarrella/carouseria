@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+<!--
+    Copyright (c) 2018 Felipe Barrella Netto
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test Page</title>
 
-    <link rel="stylesheet" href="carouseria/carouseria.css">
+    <link rel="stylesheet" href="carouseria-src/carouseria.min.css">
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet"> 
 </head>
@@ -38,7 +51,7 @@
             <button id="c1_2" onclick="hide(innerElement[0])">Esconder Container 1</button>
             <button id="c2_1" onclick="show(innerElement[1], false)">Mostrar Container 2</button>
             <button id="c2_2" onclick="hide(innerElement[1])">Esconder Container 2</button>
-            <button onclick="setCarousel('250px true vertical false true true'), contCheck(), evenLis()">Redefinir Carousel</button>
+            <button onclick="setCarousel('250px true vertical false true true'), contCheck(), evenLis(), resetForm()">Redefinir Carousel</button>
             <button onclick="changeFocus(innerElement[1]), contCheck()">Mudar para Container 2</button>
         </p>
 
@@ -64,8 +77,8 @@
                     <td class="names">Loop:</td>
                     <td>
                         <select name="loopTf" form="tweakForm">
-                            <option value="true">true</option>
-                            <option value="false" selected>false</option>
+                            <option value="true" selected>true</option>
+                            <option value="false">false</option>
                         </select>
                     </td>
                 </tr>
@@ -124,10 +137,9 @@
                 <span id="showQry" onclick="setForm(), contCheck(), evenLis()">Atualizar Carousel!</span>
             </div>
         </form>
-        
     </section>
 
-    <script type="application/javascript" src="carouseria/carouseria.min.js"></script>
+    <script type="application/javascript" src="carouseria-src/carouseria.min.js"></script>
     <script>
         // CÓDIGO DE INICIALIZAÇÃO DO CAROUSEL
         setCarousel("250px true vertical false true true");
@@ -149,6 +161,7 @@
         "|"+formItems.autoplayMilisec+" ":" ";queryline+=formItems.indexTf;queryline+=(formItems.indexTf=="true" && formItems.indexDir!="horizontal")?
         "|"+formItems.indexDir+" ":" ";queryline+=formItems.navTf;queryline+=(formItems.navTf=="true" && formItems.navDir!="horizontal")?
         "|"+formItems.navDir+" ":"";document.getElementById("SHOWQUERY").innerHTML="setCarousel(\""+queryline+"\")";setCarousel(queryline)}
+        function resetForm(){document.getElementById("tweakForm").reset();}resetForm();
     </script>
 </body>
 </html>
