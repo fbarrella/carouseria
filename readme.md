@@ -1,4 +1,4 @@
-# Carouseria 1.0 🎠
+# Carouseria 1.1 🎠
 ## Um carousel feito puramente em Javascript.
 
 Em certos momentos, a simplicidade vai muito além de um humilde modo de viver. Para um ganho de eficiência, o uso da simplicidade torna-se uma ferramenta de extrema importância. Surge daí, a ideia de criar um carousel puramente em javascript sem a utilização de funções anexas que - por muitas vezes - acabam não sendo utilizadas e terminam justamente causando lentidão no carregamento da sua página. Dê uma checada e sinta-se a vontade pra usar essa ferramenta!
@@ -10,7 +10,7 @@ Em certos momentos, a simplicidade vai muito além de um humilde modo de viver. 
     <a href="https://twitter.com/arrobarrella">
         <img src="https://img.shields.io/badge/Author-%40arrobarrella-blue.svg"/>
     </a>
-    <img src="https://img.shields.io/badge/Version-1.0-brightgreen.svg"/>
+    <img src="https://img.shields.io/badge/Version-1.1-brightgreen.svg"/>
 </p>
 
 --------------------------
